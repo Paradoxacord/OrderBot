@@ -1,0 +1,7 @@
+##Total times fed
+numTimes: 0
+
+##Fish lvl
+fishLvl: 1
+
+##people that have fed the fish

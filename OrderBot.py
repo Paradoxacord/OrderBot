@@ -1,9 +1,9 @@
 ## Written in discord.py V1.3
-## Author: Robert Salisbury(DemonPepper)
-## Contact Info: DemonPepper#3525 (Discord). edsalisbury7@gmail.com (Email)
-##/home/ubuntu/OrderBot
+## Author: Robert Salisbury(Senju7)
+## Contact Info: Senju7#3525 (Discord). edsalisbury7@gmail.com (Email)
+##/home/ubuntu/OrderBotn
 
-## Date of last Edit: 11/10/2019
+## Date of last Edit: 10/1/2019
 
 
 ##IMPORTANT 
@@ -274,7 +274,7 @@ async def DPS(ctx):
         await ctx.message.channel.send(fmt.format())
 
 @bot.command()
-async def roules(ctx):
+async def rouls(ctx):
     user = ctx.message.author
     cmdRole = discord.utils.get(ctx.guild.roles, id = 568895719717601295)
     botSend = bot.get_channel(559167143032258575)
@@ -359,6 +359,8 @@ async def on_raw_reaction_add(payload):
         return
     elif payload.emoji.id == 470677468039086080:
         await user.add_roles(guestRole)
+        if user.nick == 'Change Nickname':
+            await user.edit(nick = '')
     elif user.nick == 'Change Nickname':
         await user.send('Please change your nickname to your in-game name on Final Fantasy XIV.')
         await message.remove_reaction('<:FClogo:628731475013009418>', user)
@@ -380,8 +382,10 @@ async def on_raw_reaction_remove(payload):
         return
     elif payload.emoji.id == 470677468039086080:
         await user.remove_roles(guestRole)
+        await user.edit(nick = 'Change Nickname')
     elif payload.emoji.id == 628731475013009418:
         await user.remove_roles(memberRole)
+        await user.edit(nick = 'Change Nickname')
     else:
         return
 

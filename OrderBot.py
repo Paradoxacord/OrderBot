@@ -294,6 +294,27 @@ async def rouls(ctx):
         fmt = venOnly()
         await ctx.message.channel.send(fmt.format())
 
+@bot.command()
+async def polotics(ctx):
+    user = ctx.message.author
+    cmdRole = discord.utils.get(ctx.guild.roles, id = 675929622222995466)
+    botSend = bot.get_channel(559167143032258575)
+    userSent = ctx.channel
+
+    if userSent == botSend:
+        if cmdRole in user.roles:
+            await user.remove_roles(cmdRole)
+            fmt = '{0.mention}, The Politics role has been returned.'
+            await botSend.send(fmt.format(user))
+
+        else:
+            await user.add_roles(cmdRole)
+            fmt = '{0.mention}, You now have rented the Politics role.'
+            await botSend.send(fmt.format(user)) 
+    else:
+        fmt = venOnly()
+        await ctx.message.channel.send(fmt.format())
+
 
 @bot.command()
 #@commands.cooldown(1, 60, commands.BucketType.user)

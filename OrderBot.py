@@ -295,7 +295,7 @@ async def rouls(ctx):
         await ctx.message.channel.send(fmt.format())
 
 @bot.command()
-async def polotics(ctx):
+async def politics(ctx):
     user = ctx.message.author
     cmdRole = discord.utils.get(ctx.guild.roles, id = 675929622222995466)
     botSend = bot.get_channel(559167143032258575)

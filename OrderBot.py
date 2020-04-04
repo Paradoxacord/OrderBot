@@ -38,283 +38,11 @@ async def on_ready():
     print('Connected!')
     print('Username: ' + bot.user.name)
     print('ID: ' + str(bot.user.id))
+    print(discord.__version__)
     print('-------------')
     
 
 ##COMMANDS
-
-@bot.command()
-async def potd(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 553701469333880853)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The potd role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the potd role.'
-            await botSend.send(fmt.format(user))
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format()) 
-
-@bot.command()
-async def hoh(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 553701540414881815)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The hoh role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the hoh role.'
-            await botSend.send(fmt.format(user))
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format()) 
-
-@bot.command()
-async def endgame(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 558110812405891092)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The End Game role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the End Game role.'
-            await botSend.send(fmt.format(user))
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format()) 
-
-@bot.command()
-async def primal(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 558115501025263626)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Primal role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Primal role.'
-            await botSend.send(fmt.format(user))
-    else:
-            fmt = venOnly()
-            await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def savage(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 558115504058007552)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Savage role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Savage role.'
-            await botSend.send(fmt.format(user))
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def maps(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 561603061622112257)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Maps role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Maps role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def ps4(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 570315799957340160)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The PS4 role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the PS4 role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def pc(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 570315746857451521)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The PC role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the PC role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def tank(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 570655320678858756)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Tank role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Tank role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def healer(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 570655323879243846)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Healer role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Healer role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def DPS(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 570655325963681805)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The DPS role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the DPS role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def rouls(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 568895719717601295)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Roulettes role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Roulettes role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
-@bot.command()
-async def politics(ctx):
-    user = ctx.message.author
-    cmdRole = discord.utils.get(ctx.guild.roles, id = 675929622222995466)
-    botSend = bot.get_channel(559167143032258575)
-    userSent = ctx.channel
-
-    if userSent == botSend:
-        if cmdRole in user.roles:
-            await user.remove_roles(cmdRole)
-            fmt = '{0.mention}, The Politics role has been returned.'
-            await botSend.send(fmt.format(user))
-
-        else:
-            await user.add_roles(cmdRole)
-            fmt = '{0.mention}, You now have rented the Politics role.'
-            await botSend.send(fmt.format(user)) 
-    else:
-        fmt = venOnly()
-        await ctx.message.channel.send(fmt.format())
-
 
 @bot.command()
 #@commands.cooldown(1, 60, commands.BucketType.user)
@@ -369,47 +97,218 @@ async def clear(ctx):
 @bot.event
 async def on_raw_reaction_add(payload):
     guild = bot.get_guild(payload.guild_id)
-    welcome_channel = bot.get_channel(565679221599502346)
-    FC_Chat_channel = bot.get_channel(420888977206149133)
     user = guild.get_member(payload.user_id)
-    memberRole = discord.utils.get(guild.roles, id = 421288402558648331)
-    guestRole = discord.utils.get(guild.roles, id = 514625561188892673)
-    message = await bot.get_channel(565679221599502346).fetch_message(628745578985160705)
 
-    if payload.guild_id != 420888977206149131 or payload.channel_id != 565679221599502346 or payload.message_id != 628745578985160705:
+    #Guild ID
+    OrderServerID = 420888977206149131
+
+    #chennal and msg ID's 
+    OrderServerID = 420888977206149131
+    RulesInfoID = 565679221599502346  #new memebr 
+    MemberJoingMsgID = 628745578985160705 #new member
+
+    RoleVenderID = 559167143032258575  #Role Vender
+    RoleReactMsgID = 694652842115334164 #The mesg that people will react to for getting nonmandotory roles 
+
+    #Roles gets
+    MemberRole = discord.utils.get(guild.roles, name = 'Member')
+    GuestRole = discord.utils.get(guild.roles, name = 'Guest')
+    Tank  = discord.utils.get(guild.roles, name = 'Tank')
+    Healer = discord.utils.get(guild.roles, name = 'Healer')
+    DPS  = discord.utils.get(guild.roles, name = 'DPS')
+    Deep_dungeon  = discord.utils.get(guild.roles, name = 'Deep Dungeon')
+    Savage  = discord.utils.get(guild.roles, name = 'Savage')
+    Extreme  = discord.utils.get(guild.roles, name = 'Extreme')
+    Maps  = discord.utils.get(guild.roles, name = 'Maps')
+    Roulettes  = discord.utils.get(guild.roles, name = 'Roulettes')
+    PC  = discord.utils.get(guild.roles, name = 'PC')
+    PS4  = discord.utils.get(guild.roles, name = 'PS4')
+    Politics = discord.utils.get(guild.roles, name = 'Politics')
+    Rants = discord.utils.get(guild.roles, name = 'Rants')
+    exerciseandhealth = discord.utils.get(guild.roles, name = 'Exercise and Health')
+    Lotto = discord.utils.get(guild.roles, name = 'Lotto')
+    StorySpoiler = discord.utils.get(guild.roles, name = 'Story Spoilers')
+    NSFW = discord.utils.get(guild.roles, name = 'NSFW')
+    
+    #emoji IDS
+    EmojiMemberRole = 628731475013009418
+    EmojiguestRole = 470677468039086080
+    EmojiTank  = 563422622029971487
+    EmojiHealer = 563856108557434894
+    EmojiDPS  = 563856204372377601
+    EmojiDeep_dungeon  = 694640934385614889
+    EmojiSavage  = 694643028350206062
+    EmojiExtreme  = 694641622549397516
+    EmojiMaps  = 694643909917409402
+    EmojiRoulettes  = 694644899223699536
+    EmojiPC  = 694644200179761163
+    EmojiPS4  = 694644184266703018
+    EmojiPolitics = 694648263852294161
+    EmojiRants = 694679581864493136
+    Emojiexerciseandhealth = 694675455625920553
+    EmojiLotto = 694341869630521456
+    EmojiStorySpoiler = 694341853461610496
+    EmojiNSFW = 694656926662918145
+
+    if payload.guild_id != OrderServerID:
         return
-    elif payload.emoji.id == 470677468039086080:
-        await user.add_roles(guestRole)
+    elif payload.channel_id == RulesInfoID or payload.message_id == MemberJoingMsgID:
+        if payload.emoji.id == EmojiguestRole:
+            await user.add_roles(GuestRole)
         if user.nick == 'Change Nickname':
             await user.edit(nick = '')
-    elif user.nick == 'Change Nickname':
-        await user.send('Please change your nickname to your in-game name on Final Fantasy XIV.')
-        await message.remove_reaction('<:FClogo:628731475013009418>', user)
-    elif payload.emoji.id == 628731475013009418:
-        await user.add_roles(memberRole)
-    else:
+        elif user.nick == 'Change Nickname':
+            await user.send('Please change your nickname to your in-game name on Final Fantasy XIV.')
+            await MemberJoingMsgID.remove_reaction('<:FClogo:628731475013009418>', user)
+        elif payload.emoji.id == EmojiMemberRole:
+            await user.add_roles(MemberRole)
+        else:
+            return
+    elif payload.channel_id == RoleVenderID or payload.message_id == RoleReactMsgID:
+        if payload.emoji.id == EmojiTank:
+            await user.add_roles(Tank)
+        elif payload.emoji.id == 563856108557434894:
+            await user.add_roles(Healer)
+        elif payload.emoji.id == EmojiDPS:
+            await user.add_roles(DPS)
+        elif payload.emoji.id == EmojiDeep_dungeon:
+            await user.add_roles(Deep_dungeon)
+        elif payload.emoji.id == EmojiSavage:
+            await user.add_roles(Savage)
+        elif payload.emoji.id == EmojiExtreme:
+            await user.add_roles(Extreme)
+        elif payload.emoji.id == EmojiMaps:
+            await user.add_roles(Maps)
+        elif payload.emoji.id == EmojiRoulettes:
+            await user.add_roles(Roulettes)
+        elif payload.emoji.id == EmojiPC:
+            await user.add_roles(PC)
+        elif payload.emoji.id == EmojiPS4:
+         await user.add_roles(PS4)
+        elif payload.emoji.id == EmojiPolitics:
+            await user.add_roles(Politics)
+        elif payload.emoji.id == EmojiRants:
+            await user.add_roles(Rants)
+        elif payload.emoji.id == Emojiexerciseandhealth:
+            await user.add_roles(exerciseandhealth)
+        elif payload.emoji.id == EmojiLotto:
+            await user.add_roles(Lotto)
+        elif payload.emoji.id == EmojiStorySpoiler:
+            await user.add_roles(StorySpoiler)
+        elif payload.emoji.id == EmojiNSFW:
+            await user.add_roles(NSFW)
+        else:
+            return
+    else: 
         return
+
+    
+    
 
 @bot.event
 async def on_raw_reaction_remove(payload):
     guild = bot.get_guild(payload.guild_id)
-    channel = bot.get_channel(565679221599502346)
     user = guild.get_member(payload.user_id)
-    memberRole = discord.utils.get(guild.roles, id = 421288402558648331)
-    guestRole = discord.utils.get(guild.roles, id = 514625561188892673)
-    message = await bot.get_channel(565679221599502346).fetch_message(628745578985160705)
+    
+    #Guild ID
+    OrderServerID = 420888977206149131
 
-    if payload.guild_id != 420888977206149131 or payload.channel_id != 565679221599502346 or payload.message_id != 628745578985160705:
-        return
-    elif payload.emoji.id == 470677468039086080:
-        await user.remove_roles(guestRole)
-        await user.edit(nick = 'Change Nickname')
-    elif payload.emoji.id == 628731475013009418:
-        await user.remove_roles(memberRole)
-        await user.edit(nick = 'Change Nickname')
-    else:
-        return
+    #chennal and msg ID's 
+    OrderServerID = 420888977206149131
+    RulesInfoID = 565679221599502346  #new memebr 
+    MemberJoingMsgID = 628745578985160705 #new member
 
+    RoleVenderID = 559167143032258575  #Role Vender
+    RoleReactMsgID = 694652842115334164 #The mesg that people will react to for getting nonmandotory roles 
+
+    #Roles gets
+    MemberRole = discord.utils.get(guild.roles, name = 'Member')
+    GuestRole = discord.utils.get(guild.roles, name = 'Guest')
+    Tank  = discord.utils.get(guild.roles, name = 'Tank')
+    Healer = discord.utils.get(guild.roles, name = 'Healer')
+    DPS  = discord.utils.get(guild.roles, name = 'DPS')
+    Deep_dungeon  = discord.utils.get(guild.roles, name = 'Deep Dungeon')
+    Savage  = discord.utils.get(guild.roles, name = 'Savage')
+    Extreme  = discord.utils.get(guild.roles, name = 'Extreme')
+    Maps  = discord.utils.get(guild.roles, name = 'Maps')
+    Roulettes  = discord.utils.get(guild.roles, name = 'Roulettes')
+    PC  = discord.utils.get(guild.roles, name = 'PC')
+    PS4  = discord.utils.get(guild.roles, name = 'PS4')
+    Politics = discord.utils.get(guild.roles, name = 'Politics')
+    Rants = discord.utils.get(guild.roles, name = 'Rants')
+    exerciseandhealth = discord.utils.get(guild.roles, name = 'Exercise and Health')
+    Lotto = discord.utils.get(guild.roles, name = 'Lotto')
+    StorySpoiler = discord.utils.get(guild.roles, name = 'Story Spoilers')
+    NSFW = discord.utils.get(guild.roles, name = 'NSFW')
+    
+    #emoji IDS
+    EmojiMemberRole = 628731475013009418
+    EmojiguestRole = 470677468039086080
+    EmojiTank  = 563422622029971487
+    EmojiHealer = 563856108557434894
+    EmojiDPS  = 563856204372377601
+    EmojiDeep_dungeon  = 694640934385614889
+    EmojiSavage  = 694643028350206062
+    EmojiExtreme  = 694641622549397516
+    EmojiMaps  = 694643909917409402
+    EmojiRoulettes  = 694644899223699536
+    EmojiPC  = 694644200179761163
+    EmojiPS4  = 694644184266703018
+    EmojiPolitics = 694648263852294161
+    EmojiRants = 694679581864493136
+    Emojiexerciseandhealth = 694675455625920553
+    EmojiLotto = 694341869630521456
+    EmojiStorySpoiler = 694341853461610496
+    EmojiNSFW = 694656926662918145
+
+    if payload.guild_id != OrderServerID:
+        return
+    elif payload.channel_id == RulesInfoID or payload.message_id == MemberJoingMsgID:
+        if payload.emoji.id == 470677468039086080:
+            await user.remove_roles(GuestRole)
+            await user.edit(nick = 'Change Nickname')
+        elif payload.emoji.id == 628731475013009418:
+            await user.remove_roles(MemberRole)
+            await user.edit(nick = 'Change Nickname')
+        else:
+            return
+    elif payload.channel_id == RoleVenderID or payload.message_id == RoleReactMsgID:
+        if payload.emoji.id == EmojiTank:
+            await user.remove_roles(Tank)
+        elif payload.emoji.id == 563856108557434894:
+            await user.remove_roles(Healer)
+        elif payload.emoji.id == EmojiDPS:
+            await user.remove_roles(DPS)
+        elif payload.emoji.id == EmojiDeep_dungeon:
+            await user.remove_roles(Deep_dungeon)
+        elif payload.emoji.id == EmojiSavage:
+            await user.remove_roles(Savage)
+        elif payload.emoji.id == EmojiExtreme:
+            await user.remove_roles(Extreme)
+        elif payload.emoji.id == EmojiMaps:
+            await user.remove_roles(Maps)
+        elif payload.emoji.id == EmojiRoulettes:
+            await user.remove_roles(Roulettes)
+        elif payload.emoji.id == EmojiPC:
+            await user.remove_roles(PC)
+        elif payload.emoji.id == EmojiPS4:
+         await user.remove_roles(PS4)
+        elif payload.emoji.id == EmojiPolitics:
+            await user.remove_roles(Politics)
+        elif payload.emoji.id == EmojiRants:
+            await user.remove_roles(Rants)
+        elif payload.emoji.id == Emojiexerciseandhealth:
+            await user.remove_roles(exerciseandhealth)
+        elif payload.emoji.id == EmojiLotto:
+            await user.remove_roles(Lotto)
+        elif payload.emoji.id == EmojiStorySpoiler:
+            await user.remove_roles(StorySpoiler)
+        elif payload.emoji.id == EmojiNSFW:
+            await user.remove_roles(NSFW)
+        else:
+            return
+    else: 
+        return
 
 @bot.event
 async def on_member_join(member):

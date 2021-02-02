@@ -3,7 +3,7 @@
 ## Contact Info: Senju7#3525 (Discord). edsalisbury7@gmail.com (Email)
 ##/home/ubuntu/OrderBotn
 
-## Date of last Edit: 10/1/2019
+## Date of last Edit: 1/21/2021
 
 
 ##IMPORTANT 
@@ -12,6 +12,8 @@
 
 import discord
 import logging
+
+from discord import reaction
 import config
 from config import botRunKey
 from datetime import datetime  
@@ -19,6 +21,7 @@ from datetime import timedelta
 from discord.ext import commands
 from random import randint
 
+intents = discord.Intents(messages=True, guilds=True, reactions=True, members=True)
 logger = logging.getLogger('discord')
 logger.setLevel(logging.ERROR)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -26,8 +29,9 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='!', intents=intents)
 bot.remove_command('help')
+discord.Permissions.all() #makes sure that bot can use all permissions
 
 # Discord = require('discord.py')
 # client = new Discord.Client()
@@ -51,7 +55,7 @@ async def feed(ctx):
     if ctx.channel == bot.get_channel(563375034136133632):
         pass
         phrase = ['test']
-        path = '/home/ubuntu/OrderBot/feedPhrase.txt'
+        path = 'DiscordBot/feedPhrase.txt'
         f = open(path, "r")
         for line in f:
             phrase.append(line)
@@ -111,7 +115,7 @@ async def on_raw_reaction_add(payload):
     RoleReactMsgID = 694652842115334164 #The mesg that people will react to for getting nonmandotory roles 
 
     #Roles gets
-    MemberRole = discord.utils.get(guild.roles, name = 'Member')
+    MemberRole = discord.utils.get(guild.roles, name = 'Brave')
     GuestRole = discord.utils.get(guild.roles, name = 'Guest')
     Tank  = discord.utils.get(guild.roles, name = 'Tank')
     Healer = discord.utils.get(guild.roles, name = 'Healer')
@@ -150,24 +154,30 @@ async def on_raw_reaction_add(payload):
     EmojiStorySpoiler = 694341853461610496
     EmojiNSFW = 694656926662918145
 
-    if payload.guild_id != OrderServerID:
+    if payload.guild_id != OrderServerID: #checks to see if this is the right sever
         return
-    elif payload.channel_id == RulesInfoID or payload.message_id == MemberJoingMsgID:
-        if payload.emoji.id == EmojiguestRole:
+
+    elif payload.channel_id == RulesInfoID and payload.message_id == MemberJoingMsgID: #makes sure that this emjoi is only being checked for this chennal and proper msg
+        if payload.emoji.id == EmojiguestRole: #checing guest rules 
             await user.add_roles(GuestRole)
-        if user.nick == 'Change Nickname':
-            await user.edit(nick = '')
-        elif user.nick == 'Change Nickname':
-            await user.send('Please change your nickname to your in-game name on Final Fantasy XIV.')
-            await MemberJoingMsgID.remove_reaction('<:FClogo:628731475013009418>', user)
-        elif payload.emoji.id == EmojiMemberRole:
-            await user.add_roles(MemberRole)
-        else:
-            return
-    elif payload.channel_id == RoleVenderID or payload.message_id == RoleReactMsgID:
+            if user.nick == 'Change Nickname':
+                await user.edit(nick = '')
+                return
+
+        elif payload.emoji.id == EmojiMemberRole: #checking member(brave) rules
+            if user.nick == 'Change Nickname':
+                await user.send('Please change your nickname to your in-game name on Final Fantasy XIV.')
+                #await MemberJoingMsgID.remove_reaction(EmojiMemberRole, user) #TODO fix remove_reaction after failed use
+
+            elif payload.emoji.id == EmojiMemberRole:
+                    await user.add_roles(MemberRole)
+            else:
+                return
+    #This follofing if statment if for info roles that are just cosmetic
+    elif payload.channel_id == RoleVenderID and payload.message_id == RoleReactMsgID:
         if payload.emoji.id == EmojiTank:
             await user.add_roles(Tank)
-        elif payload.emoji.id == 563856108557434894:
+        elif payload.emoji.id == EmojiHealer:
             await user.add_roles(Healer)
         elif payload.emoji.id == EmojiDPS:
             await user.add_roles(DPS)
@@ -222,7 +232,7 @@ async def on_raw_reaction_remove(payload):
     RoleReactMsgID = 694652842115334164 #The mesg that people will react to for getting nonmandotory roles 
 
     #Roles gets
-    MemberRole = discord.utils.get(guild.roles, name = 'Member')
+    MemberRole = discord.utils.get(guild.roles, name = 'Brave')
     GuestRole = discord.utils.get(guild.roles, name = 'Guest')
     Tank  = discord.utils.get(guild.roles, name = 'Tank')
     Healer = discord.utils.get(guild.roles, name = 'Healer')
@@ -263,11 +273,13 @@ async def on_raw_reaction_remove(payload):
 
     if payload.guild_id != OrderServerID:
         return
+
     elif payload.channel_id == RulesInfoID or payload.message_id == MemberJoingMsgID:
-        if payload.emoji.id == 470677468039086080:
+        if payload.emoji.id == EmojiguestRole:
             await user.remove_roles(GuestRole)
             await user.edit(nick = 'Change Nickname')
-        elif payload.emoji.id == 628731475013009418:
+
+        elif payload.emoji.id == EmojiMemberRole:
             await user.remove_roles(MemberRole)
             await user.edit(nick = 'Change Nickname')
         else:
@@ -275,7 +287,7 @@ async def on_raw_reaction_remove(payload):
     elif payload.channel_id == RoleVenderID or payload.message_id == RoleReactMsgID:
         if payload.emoji.id == EmojiTank:
             await user.remove_roles(Tank)
-        elif payload.emoji.id == 563856108557434894:
+        elif payload.emoji.id == EmojiHealer:
             await user.remove_roles(Healer)
         elif payload.emoji.id == EmojiDPS:
             await user.remove_roles(DPS)
@@ -312,7 +324,7 @@ async def on_raw_reaction_remove(payload):
 
 @bot.event
 async def on_member_join(member):
-    guild = member.guild
+    #guild = member.guild
     
     await member.edit(nick = 'Change Nickname')
 
